@@ -2,6 +2,8 @@ package com.xiaolv.test.client;
 
 import com.xiaolv.test.object.SingleInstance;
 
+import sun.security.jca.GetInstance;
+
 /**
  * 经实验多线程调用单例的函数时，不会被阻塞；
  * 单例里面使用静态函数或INSTANCE.普通函数，结果类似；
@@ -12,17 +14,28 @@ public class TestSingleInstance {
 	
 	private static int n = 0;
 	
+	
+//	public static TestSingleInstance INSTANCE = new TestSingleInstance();
+//	
+//	private TestSingleInstance(){}
+//	
+//	
+//	public static TestSingleInstance getInstance(){
+//		return INSTANCE;
+//	}
+	
+	
+	
 	public static void main(String...args){
-		System.out.println();
 		
-		//在同一个线程里调用，串行执行；
+		//single 
 //		for (int i = 0; i < 100; i++) {
 //			String str = SingleInstance.INSTANCE.getString("origStr" + (i+200));
 //			System.out.println(str);
 //		}
 		
-		//多线程调用时的情形
-		for (n = 0; n < 100; n++) {
+		//multi-thread
+		for (n = 0; n < 5; n++) {
 			final Thread t = new Thread(run);
 			
 			System.out.println("name:" +  t.getName());
@@ -35,9 +48,26 @@ public class TestSingleInstance {
 		
 		@Override
 		public void run() {
-			final int fn= 10;
-			String str = SingleInstance.INSTANCE.getString("origStr" + (n+200));
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			String str = SingleInstance.INSTANCE.getString(Thread.currentThread().getName()+":" + (n+200));
 			System.out.println(str);			
+//			String str2 = SingleInstance.INSTANCE.getStringStatic(Thread.currentThread().getName()+":" + (n+200));
+//			System.out.println(str2);			
 		}
 	};
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
 }

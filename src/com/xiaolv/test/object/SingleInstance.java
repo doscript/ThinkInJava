@@ -35,7 +35,7 @@ public class SingleInstance {
 	public static synchronized String getStringStatic(String in){
 		
 //		calledCnt++;
-		System.out.println("before sleep:" + in);
+		System.out.println("before sleep static:" + in);
 		String out = null;
 		
 		try {
@@ -46,7 +46,7 @@ public class SingleInstance {
 		
 		out = in;
 		
-		return (calledCnt++)+ ":" + out;
+		return (calledCnt++)+ ":222:" + out;
 	}
 	
 }
