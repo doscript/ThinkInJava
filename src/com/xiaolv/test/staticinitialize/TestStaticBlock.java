@@ -9,6 +9,7 @@ public class TestStaticBlock {
 	
 	public static String str;
 	
+	
 	static {
 		str = "in static block";
 	}
