@@ -18,9 +18,12 @@ public class DatabaseHelper {
 	
 	private static Logger logger = LoggerFactory.getLogger("DatabaseHelper");
 	
-	static final String USERDB_URL="jdbc:mysql://101.201.103.236:3306/zlyy?characterEncoding=GBK"; 
-	static final String USERDB_ACCOUNT="rayoo"; 
-	static final String USERDB_PASSWD="zlyy1qaz!QAZ"; 
+//	static final String USERDB_URL="jdbc:mysql://101.201.103.236:3306/zlyy?characterEncoding=GBK"; 
+//	static final String USERDB_ACCOUNT="rayoo"; 
+//	static final String USERDB_PASSWD="zlyy1qaz!QAZ"; 
+	static final String USERDB_URL="jdbc:mysql://rdsrej6jzrej6jz.mysql.rds.aliyuncs.com:3306/funambol?characterEncoding=UTF-8"; 
+	static final String USERDB_ACCOUNT="funambol"; 
+	static final String USERDB_PASSWD="r1db6s4en"; 
 	
 	 //get database connection
 	 public static Connection getConnection() throws Exception {
